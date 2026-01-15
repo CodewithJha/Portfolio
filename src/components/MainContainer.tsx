@@ -8,9 +8,13 @@ import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
+import TechStackNew from "./TechStackNew";
+import CallToAction from "./CallToAction";
 import setSplitText from "./utils/splitText";
 
+// TechStack with 3D balls - kept for later use
 const TechStack = lazy(() => import("./TechStack"));
+const SHOW_TECHSTACK_BALLS = false; // Set to true to re-enable 3D balls
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(
@@ -41,9 +45,15 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <WhatIDo />
         <Career />
         <Work />
-        <Suspense fallback={<div>Loading....</div>}>
-          <TechStack />
-        </Suspense>
+        {/* TechStack Section - Toggle SHOW_TECHSTACK_BALLS to enable/disable */}
+        {SHOW_TECHSTACK_BALLS ? (
+          <Suspense fallback={<div>Loading....</div>}>
+            <TechStack />
+          </Suspense>
+        ) : (
+          <TechStackNew />
+        )}
+        <CallToAction />
         <Contact />
       </div>
     </div>

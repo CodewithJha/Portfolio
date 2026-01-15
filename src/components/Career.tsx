@@ -1,6 +1,14 @@
 import "./styles/Career.css";
 import { config } from "../config";
 
+const getDisplayYear = (period: string) => {
+  if (period.includes("Present")) return "NOW";
+  if (period.includes(" - ")) {
+    return period.split(" - ")[0]; // Show start year for ranges
+  }
+  return period; // Single year like "2021"
+};
+
 const Career = () => {
   return (
     <div className="career-section section-container">
@@ -20,7 +28,7 @@ const Career = () => {
                   <h4>{exp.position}</h4>
                   <h5>{exp.company}</h5>
                 </div>
-                <h3>{exp.period.includes("Present") ? "NOW" : exp.period.split(" - ")[1]}</h3>
+                <h3>{getDisplayYear(exp.period)}</h3>
               </div>
               <p>{exp.description}</p>
             </div>

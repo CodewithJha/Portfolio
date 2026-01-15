@@ -16,69 +16,154 @@ export const config = {
     },
     experiences: [
         {
-            position: "Frontend Developer",
-            company: "SelectSkillSet",
-            period: "2024 - Present",
-            location: "Remote",
-            description: "Developing modern, responsive frontend applications with focus on user experience and performance. Working with cutting-edge technologies to build scalable web solutions.",
+            position: "Learning Something New",
+            company: "Self-Development",
+            period: "2025 - Present",
+            location: "Bangladesh",
+            description: "Continuously exploring emerging technologies, researching advanced AI systems, and pushing the boundaries of what's possible in tech.",
             responsibilities: [
-                "Building responsive and interactive user interfaces using React and Next.js",
-                "Implementing modern UI/UX designs with TailwindCSS and Framer Motion",
-                "Optimizing application performance and ensuring cross-browser compatibility",
-                "Collaborating with design and backend teams to deliver high-quality features"
+                "Researching cutting-edge AI and ML technologies",
+                "Experimenting with new frameworks and tools",
+                "Contributing to open-source projects",
+                "Building innovative personal projects"
             ],
-            technologies: ["React", "Next.js", "TailwindCSS", "JavaScript", "Framer Motion", "TypeScript"]
+            technologies: ["Research", "Innovation", "Open Source", "New Tech"]
         },
         {
-            position: "Full Stack Developer",
-            company: "Tekisky",
-            period: "2023 - 2024",
-            location: "Remote",
-            description: "Developed and maintained full-stack web applications, working on both frontend and backend systems. Collaborated with cross-functional teams to deliver robust software solutions.",
+            position: "AI Engineer",
+            company: "Freelance & Projects",
+            period: "2025",
+            location: "Bangladesh",
+            description: "Developing intelligent AI systems, chatbots, and machine learning solutions. Building next-gen conversational AI agents and JARVIS-like personal assistants.",
             responsibilities: [
-                "Developed and maintained full-stack web applications using React, Node.js, and MongoDB",
-                "Implemented RESTful APIs and integrated third-party services",
-                "Built responsive user interfaces and optimized application performance",
-                "Worked on database design and backend architecture"
+                "Building AI-powered chatbots and conversational agents",
+                "Developing machine learning models with TensorFlow and PyTorch",
+                "Working with LLMs and transformer architectures",
+                "Creating autonomous AI systems and automation tools"
             ],
-            technologies: ["React", "Node.js", "MongoDB", "Express", "JavaScript", "MERN Stack"]
+            technologies: ["Python", "TensorFlow", "PyTorch", "LLMs", "NLP", "AI Agents"]
+        },
+        {
+            position: "Full-Stack Developer",
+            company: "Freelance & Projects",
+            period: "2024",
+            location: "Bangladesh",
+            description: "Built complete web applications from frontend to backend. Developed responsive UIs, RESTful APIs, and database solutions for various clients and projects.",
+            responsibilities: [
+                "Developing full-stack web applications using React and Node.js",
+                "Building RESTful APIs and integrating databases",
+                "Creating responsive and interactive user interfaces",
+                "Deploying and maintaining web applications"
+            ],
+            technologies: ["React", "Node.js", "MongoDB", "Express", "Next.js", "TypeScript"]
+        },
+        {
+            position: "Python Developer",
+            company: "Self-Taught & Projects",
+            period: "2023",
+            location: "Bangladesh",
+            description: "Dove deep into Python programming, building automation scripts, bots, and mastering the fundamentals of software development and problem-solving.",
+            responsibilities: [
+                "Learning Python programming and core concepts",
+                "Building automation scripts and Discord bots",
+                "Exploring data structures and algorithms",
+                "Participating in competitive programming"
+            ],
+            technologies: ["Python", "Automation", "Scripting", "Discord.py", "Problem Solving"]
+        },
+        {
+            position: "Graphic Designer",
+            company: "Freelance",
+            period: "2022",
+            location: "Bangladesh",
+            description: "Started my creative journey as a graphic designer, creating logos, banners, and visual content. This sparked my passion for technology and digital creation.",
+            responsibilities: [
+                "Designing logos and brand identity materials",
+                "Creating social media graphics and banners",
+                "Working with clients on creative projects",
+                "Learning design principles and visual aesthetics"
+            ],
+            technologies: ["Photoshop", "Illustrator", "Canva", "Figma", "Visual Design"]
+        },
+        {
+            position: "Microsoft Office",
+            company: "Begin Learning",
+            period: "2021",
+            location: "Bangladesh",
+            description: "Started my journey into the digital world by learning Microsoft Office tools. This foundational step introduced me to computers and sparked my curiosity for technology.",
+            responsibilities: [
+                "Learning Microsoft Word, Excel, and PowerPoint",
+                "Creating documents and presentations",
+                "Understanding basic computer operations",
+                "Building foundational digital skills"
+            ],
+            technologies: ["MS Word", "MS Excel", "MS PowerPoint", "Computer Basics"]
         }
     ],
     projects: [
         {
             id: 1,
-            title: "AI-Powered Code Review Assistant",
-            category: "Full Stack",
-            technologies: "Python, TensorFlow, React, FastAPI, PostgreSQL, Docker",
-            image: "/images/project-1.webp"
+            title: "Drishti",
+            category: "AI / LLM",
+            technologies: "Python, PyTorch, Transformers, FastAPI, React, MongoDB",
+            image: "/images/project-1.webp",
+            description: "Bangladesh's first intelligent advanced AI chatbot powered by a custom Large Language Model. Features natural language understanding, contextual conversations, and multilingual support including Bengali."
         },
         {
             id: 2,
-            title: "Real-time Collaborative Whiteboard",
-            category: "Full Stack",
-            technologies: "TypeScript, WebRTC, Socket.io, Canvas API, Node.js, Redis",
-            image: "/images/project-2.webp"
+            title: "VoteChain",
+            category: "Blockchain",
+            technologies: "Solidity, Web3.js, React, Ethereum, IPFS, MetaMask, Node.js",
+            image: "/images/project-2.webp",
+            description: "A decentralized election system built on blockchain technology ensuring transparent, tamper-proof, and verifiable voting. Features smart contracts for vote integrity and real-time result tracking."
         },
         {
             id: 3,
-            title: "Blockchain Voting System",
-            category: "Full Stack",
-            technologies: "Solidity, Web3.js, React, Ethereum, IPFS, MetaMask",
-            image: "/images/project-3.webp"
+            title: "EIE - Earthquake Impact Estimator",
+            category: "AI / ML",
+            technologies: "Python, TensorFlow, Scikit-learn, FastAPI, React, PostgreSQL",
+            image: "/images/project-3.webp",
+            description: "An AI-powered earthquake prediction and impact estimation system. Uses seismic data analysis and machine learning to detect patterns and provide early warnings before earthquakes strike."
         },
         {
             id: 4,
-            title: "Cloud Infrastructure Dashboard",
+            title: "GameKroy",
             category: "Full Stack",
-            technologies: "Go, Kubernetes, Grafana, Prometheus, Terraform, React",
-            image: "/images/project-4.webp"
+            technologies: "React, Node.js, MongoDB, Express, Stripe, TailwindCSS",
+            image: "/images/project-4.webp",
+            description: "A full-featured e-commerce platform for gaming products. Includes user authentication, product catalog, shopping cart, secure payments, order tracking, and admin dashboard."
         },
         {
             id: 5,
-            title: "Neural Network Visualizer",
-            category: "Full Stack",
-            technologies: "Python, TensorFlow.js, D3.js, Next.js, WebGL, TypeScript",
-            image: "/images/project-5.webp"
+            title: "RedxChess",
+            category: "AI / Game Engine",
+            technologies: "Python, C++, Neural Networks, Bitboards, UCI Protocol",
+            image: "/images/project-5.webp",
+            description: "A high-performance chess engine rated 3640 ELO. Features advanced search algorithms, neural network evaluation, and optimized bitboard representation for lightning-fast move generation."
+        },
+        {
+            id: 6,
+            title: "Floodhub",
+            category: "AI / ML",
+            technologies: "Python, TensorFlow, Pandas, React, FastAPI, GIS",
+            image: "/images/project-6.webp",
+            description: "A flood prediction model specifically designed for Bangladesh's river systems. Analyzes weather patterns, water levels, and historical data to provide accurate flood forecasts and alerts."
+        },
+        {
+            id: 7,
+            title: "Phoenix",
+            category: "AI Assistant",
+            technologies: "Python, Speech Recognition, PyAutoGUI, OpenAI API, Tkinter",
+            image: "/images/project-7.webp",
+            description: "A JARVIS-inspired personal AI desktop assistant. Controls system functions, manages tasks, answers queries, automates workflows, and provides voice-activated computing experience."
+        },
+        {
+            id: 8,
+            title: "HekTools",
+            category: "Security / Android",
+            technologies: "Kotlin, Android SDK, Firebase, Python, Encryption",
+            image: "/images/project-8.webp",
+            description: "An advanced Android monitoring and security research tool. Features remote device management, activity logging, and encrypted data transmission for security testing purposes."
         }
     ],
     contact: {
