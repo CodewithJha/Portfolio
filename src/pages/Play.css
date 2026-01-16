@@ -173,6 +173,13 @@ body:has(.play-page) {
   justify-content: center;
   font-size: 16px;
   border: 1px solid rgba(194, 164, 255, 0.2);
+  overflow: hidden;
+}
+
+.player-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .player-details {
@@ -509,6 +516,22 @@ body:has(.play-page) {
   .control-btn {
     flex: 1;
   }
+
+  .chat-panel {
+    width: 100%;
+    max-width: 540px;
+    height: 400px;
+    min-height: 320px;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-messages {
+    max-height: 220px;
+    min-height: 120px;
+    overflow-y: auto;
+    flex: 1 1 auto;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -548,6 +571,15 @@ body:has(.play-page) {
 
   .player-rating {
     font-size: 11px;
+  }
+
+  .chat-panel {
+    height: 320px;
+    max-height: 60vh;
+  }
+  .chat-messages {
+    max-height: 140px;
+    min-height: 80px;
   }
 }
 
@@ -719,5 +751,15 @@ body:has(.play-page) {
     width: 100%;
     max-width: 540px;
     height: 400px;
+    min-height: 320px;
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .chat-messages {
+    max-height: 220px;
+    min-height: 120px;
+    overflow-y: auto;
+    flex: 1 1 auto;
   }
 }

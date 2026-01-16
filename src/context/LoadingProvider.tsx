@@ -16,7 +16,11 @@ interface LoadingType {
 export const LoadingContext = createContext<LoadingType | null>(null);
 
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => {
+    // Skip loading on mobile
+    if (window.innerWidth <= 768) return false;
+    return true;
+  });
   const [loading, setLoading] = useState(0);
 
   const value = {
@@ -24,6 +28,19 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setIsLoading,
     setLoading,
   };
+  useEffect(() => {
+    // Auto-start animations on mobile since there's no 3D model
+    if (window.innerWidth <= 768) {
+      import("../components/utils/initialFX").then((module) => {
+        if (module.initialFX) {
+          setTimeout(() => {
+            module.initialFX();
+          }, 100);
+        }
+      });
+    }
+  }, []);
+
   useEffect(() => {}, [loading]);
 
   return (

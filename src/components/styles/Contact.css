@@ -11,11 +11,11 @@
   justify-content: flex-start;
 }
 .contact-section h3 {
-  font-size: 60px;
+  font-size: 32px;
   font-weight: 400;
   text-transform: uppercase;
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .contact-flex {
   display: flex;
@@ -25,38 +25,59 @@
   font-weight: 500;
   margin: 0;
   opacity: 0.6;
+  font-size: 14px;
 }
 .contact-box {
   display: flex;
   flex-direction: column;
 }
 .contact-flex p {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  font-size: 14px;
 }
 a.contact-social {
-  font-size: 25px;
+  font-size: 16px;
   border-bottom: 1px solid #ccc;
+  margin-bottom: 8px;
 }
 .contact-box h2 {
   font-weight: 400;
-  font-size: 23px;
+  font-size: 16px;
   margin: 0;
+  line-height: 22px;
 }
 .contact-box h2 > span {
   color: var(--accentColor);
 }
 .contact-box h5 {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 14px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   opacity: 0.5;
 }
-@media only screen and (max-width: 1600px) {
+@media only screen and (min-width: 600px) {
   .contact-section h3 {
-    font-size: 50px;
+    font-size: 40px;
+  }
+  .contact-box h2 {
+    font-size: 18px;
+  }
+  a.contact-social {
+    font-size: 18px;
+  }
+  .contact-flex h4 {
+    font-size: 15px;
+  }
+  .contact-flex p {
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .contact-section h3 {
+    font-size: 48px;
   }
   .contact-box h2 {
     font-size: 20px;
@@ -65,18 +86,36 @@ a.contact-social {
     font-size: 22px;
   }
 }
-@media only screen and (max-width: 1300px) {
+@media only screen and (min-width: 1300px) {
   .contact-section h3 {
-    font-size: 40px;
+    font-size: 55px;
   }
   .contact-box h2 {
-    font-size: 18px;
+    font-size: 22px;
   }
   a.contact-social {
-    font-size: 20px;
+    font-size: 24px;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .contact-section h3 {
+    font-size: 60px;
+    margin-bottom: 40px;
+  }
+  .contact-box h2 {
+    font-size: 23px;
+  }
+  a.contact-social {
+    font-size: 25px;
   }
   .contact-flex p {
-    margin-top: 0px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .contact-box h5 {
+    font-size: 20px;
+    line-height: 20px;
+    gap: 10px;
   }
 }
 @media only screen and (max-width: 900px) {

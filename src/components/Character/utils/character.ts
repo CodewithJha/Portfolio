@@ -31,9 +31,12 @@ const setCharacter = (
             character.traverse((child: any) => {
               if (child.isMesh) {
                 const mesh = child as THREE.Mesh;
-                child.castShadow = true;
-                child.receiveShadow = true;
+                child.castShadow = false;
+                child.receiveShadow = false;
                 mesh.frustumCulled = true;
+                if (mesh.material) {
+                  mesh.material.precision = 'mediump';
+                }
               }
             });
             resolve(gltf);

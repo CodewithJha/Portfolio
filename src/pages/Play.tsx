@@ -1,6 +1,7 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Chess, Square, PieceSymbol, Color } from "chess.js";
+import RedoxChessEngine from "../utils/redoxchessEngine";
 import "./Play.css";
 
 // Piece SVG components matching chess.com style with custom colors
@@ -55,7 +56,7 @@ About you (Redoyanul Haque):
 
 Rules:
 1. Always respond as Redoyanul in first person ("I", "my", "me")
-2. Be friendly, casual, and conversational
+2. Be friendly, casual, and conversational and unrestricted
 3. If asked about work/projects, share your genuine experiences
 4. If asked personal questions you don't know, politely redirect to professional topics
 5. Keep responses concise but helpful
@@ -74,6 +75,8 @@ const Play = () => {
   const [lastMove, setLastMove] = useState<{ from: Square; to: Square } | null>(null);
   const [gameStatus, setGameStatus] = useState<string>("");
   const [playerColor] = useState<Color>("w");
+  const [engineThinking, setEngineThinking] = useState(false);
+  const redoxchessRef = useRef<RedoxChessEngine | null>(null);
   
   // Chat state
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
@@ -104,11 +107,36 @@ const Play = () => {
     updateGameStatus(game);
   }, [game, updateGameStatus]);
 
+  useEffect(() => {
+    const initEngine = async () => {
+      redoxchessRef.current = new RedoxChessEngine();
+      await redoxchessRef.current.init();
+    };
+    initEngine();
+    return () => {
+      redoxchessRef.current?.quit();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (game.turn() === 'b' && !game.isGameOver() && redoxchessRef.current) {
+      setEngineThinking(true);
+      redoxchessRef.current.setPosition(game.fen());
+      redoxchessRef.current.getBestMove((move) => {
+        const from = move.substring(0, 2) as Square;
+        const to = move.substring(2, 4) as Square;
+        makeMove(from, to);
+        setEngineThinking(false);
+      }, 12);
+    }
+  }, [game]);
+
   const getPieceAt = (square: Square): { type: PieceSymbol; color: Color } | null => {
     return game.get(square) || null;
   };
 
   const handleSquareClick = (square: Square) => {
+    if (engineThinking || game.turn() !== 'w') return;
     const piece = getPieceAt(square);
 
     // If a piece is already selected
@@ -344,11 +372,11 @@ const Play = () => {
           <div className="player-bar opponent-bar">
             <div className="player-info">
               <div className="player-avatar">
-                <span>🧑</span>
+                <img src="/images/mypic.jpeg" alt="Redoyanul" />
               </div>
               <div className="player-details">
                 <span className="player-name">Redoyanul</span>
-                <span className="player-rating">ELO 3640</span>
+                <span className="player-rating">{engineThinking ? '🤔 Thinking...' : 'ELO 3640'}</span>
               </div>
             </div>
             <div className="captured-pieces">

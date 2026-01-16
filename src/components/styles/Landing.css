@@ -1,3 +1,16 @@
+/* Remove mobile photo and ensure 3D character is always hidden on mobile */
+@media only screen and (max-width: 768px) {
+  .character-model {
+    display: none !important;
+  }
+  .landing-section,
+  .landing-container {
+    height: auto !important;
+    min-height: 100vh;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+}
 .landing-section {
   width: 100%;
   max-width: var(--cMaxWidth);

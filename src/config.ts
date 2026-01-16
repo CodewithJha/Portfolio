@@ -170,8 +170,9 @@ export const config = {
         email: "redoyanul1234@gmail.com",
         github: "https://github.com/red1-for-hek",
         linkedin: "https://linkedin.com/in/red1-for-hek",
-        twitter: "https://fb.com/redoyanulhaque.hacker.official",
-        instagram: "https://instagram.com/red_1_ul"
+        twitter: "https://x.com/red_1_ul",
+        facebook: "https://www.facebook.com/redoyanulhaque.hacker.official",
+        instagram: "https://www.instagram.com/red_1_ul"
     },
     skills: {
         develop: {
