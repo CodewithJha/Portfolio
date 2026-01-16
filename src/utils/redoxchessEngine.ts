@@ -1,17 +1,21 @@
 class RedoxChessEngine {
   private engine: Worker | null = null;
   private onMoveCallback: ((move: string) => void) | null = null;
-  private isReady = false;
+  private _isReady = false;
+
+  get isReady() {
+    return this._isReady;
+  }
 
   async init() {
     return new Promise<void>((resolve) => {
       this.engine = new Worker('/redoxchess.js');
-      
+
       this.engine.onmessage = (event) => {
         const message = event.data;
-        
+
         if (message === 'readyok') {
-          this.isReady = true;
+          this._isReady = true;
           resolve();
         } else if (message.startsWith('bestmove')) {
           const move = message.split(' ')[1];

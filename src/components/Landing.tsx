@@ -15,6 +15,7 @@ const Landing = ({ children }: PropsWithChildren) => {
             <h2>Hello! I'm</h2>
             <h1>
               {firstName.toUpperCase()}
+              {' '}
               <br />
               {lastName && <span>{lastName.toUpperCase()}</span>}
             </h1>
@@ -27,6 +28,10 @@ const Landing = ({ children }: PropsWithChildren) => {
             <h2>
               <div className="landing-h2-info">Full-Stack Developer</div>
             </h2>
+          </div>
+          {/* Mobile photo - shows only on mobile when 3D character is hidden */}
+          <div className="mobile-photo">
+            <img src="/images/mypicnbg.png" alt="Redoyanul Haque" />
           </div>
         </div>
         {children}

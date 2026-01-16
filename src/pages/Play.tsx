@@ -35,9 +35,7 @@ interface ChatMessage {
   content: string;
 }
 
-// Load Groq API key from Vite env var: VITE_GROQ_API_KEY
-// Do NOT hardcode secrets in source. Put your key in a local .env or CI secret.
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY || '';
+// API key is now handled server-side in api/chat.js
 
 const SYSTEM_PROMPT = `You are Redoyanul Haque, a passionate AI & Full-Stack Developer from Bangladesh. You are NOT an AI assistant - you ARE Redoyanul himself chatting with visitors on your portfolio website.
 
@@ -77,7 +75,7 @@ const Play = () => {
   const [playerColor] = useState<Color>("w");
   const [engineThinking, setEngineThinking] = useState(false);
   const redoxchessRef = useRef<RedoxChessEngine | null>(null);
-  
+
   // Chat state
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     { role: 'assistant', content: 'Hello there! I am Redoyanul Haque 👋 Ask me anything you want to know!' }
@@ -225,12 +223,12 @@ const Play = () => {
 
   const sendMessage = async () => {
     if (!chatInput.trim()) return;
-    
+
     const userMessage: ChatMessage = { role: 'user', content: chatInput };
     setChatMessages(prev => [...prev, userMessage]);
     setChatInput('');
     setIsTyping(true);
-    
+
     try {
       const messages = [
         { role: 'system', content: SYSTEM_PROMPT },
@@ -241,22 +239,18 @@ const Play = () => {
         { role: 'user', content: chatInput }
       ];
 
-      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${GROQ_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
           messages: messages,
-          temperature: 0.7,
-          max_tokens: 500,
         }),
       });
 
       const data = await response.json();
-      
+
       if (data.choices && data.choices[0]?.message?.content) {
         const assistantMessage: ChatMessage = {
           role: 'assistant',
@@ -414,10 +408,10 @@ const Play = () => {
                       {rank === (boardFlipped ? '8' : '1') && (
                         <span className="coord-file">{file}</span>
                       )}
-                      
+
                       {/* Piece */}
                       {renderPiece(piece)}
-                      
+
                       {/* Possible move indicator */}
                       {isPossibleMove && (
                         <div className={`move-indicator ${piece ? 'capture' : ''}`} />

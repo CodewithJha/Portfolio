@@ -23,6 +23,7 @@
   --vh: 100vh;
   --vh: 100svh;
 }
+
 h1,
 h2,
 h3,
@@ -31,6 +32,7 @@ h5,
 h6 {
   font-family: "Geist", sans-serif;
 }
+
 body {
   overflow: hidden;
 }
@@ -41,38 +43,48 @@ body {
     overflow: auto !important;
     height: auto !important;
     min-height: 100vh !important;
+    touch-action: manipulation;
   }
+
   html {
     overflow-x: hidden !important;
     overflow-y: auto !important;
+    touch-action: manipulation;
   }
+
   /* Ensure no fixed elements block scrolling */
   .container-main {
     position: static !important;
     height: auto !important;
   }
 }
+
 a {
   color: inherit;
   text-decoration: inherit;
 }
+
 a:hover {
   color: var(--accentColor);
 }
+
 main {
   opacity: 1;
   transition: 0.3s;
 }
+
 .main-active {
   opacity: 0;
   animation: fadeIn 1s 1;
   animation-fill-mode: forwards;
 }
+
 @keyframes fadeIn {
   100% {
     opacity: 1;
   }
 }
+
 body {
   margin: 0;
   height: auto;
@@ -84,6 +96,7 @@ body {
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
+
 .main-body {
   max-width: 100vw;
   overflow-x: hidden;
@@ -95,15 +108,18 @@ body {
   margin: auto;
   position: relative;
 }
+
 .container1 {
   width: var(--cWidth);
   height: var(--vh);
   margin: auto;
   position: relative;
 }
+
 .split-line {
   overflow: hidden;
 }
+
 .split-h2 {
   overflow: hidden;
   display: flex;
@@ -137,14 +153,14 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
+  background:
     radial-gradient(circle at 20% 50%, rgba(194, 164, 255, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 50%, rgba(194, 164, 255, 0.08) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
 
-.techstack > * {
+.techstack>* {
   position: relative;
   z-index: 1;
 }
@@ -167,6 +183,7 @@ body {
     --cWidth: 94%;
   }
 }
+
 @media screen and (max-width: 900px) {
   .techstack h2 {
     font-size: 40px;

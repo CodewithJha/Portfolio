@@ -106,7 +106,7 @@ export const config = {
             title: "Drishti",
             category: "AI / LLM",
             technologies: "Python, PyTorch, Transformers, FastAPI, React, MongoDB",
-            image: "/images/project-1.webp",
+            image: "/images/drishti.png",
             description: "Bangladesh's first intelligent advanced AI chatbot powered by a custom Large Language Model. Features natural language understanding, contextual conversations, and multilingual support including Bengali."
         },
         {
@@ -114,23 +114,23 @@ export const config = {
             title: "VoteChain",
             category: "Blockchain",
             technologies: "Solidity, Web3.js, React, Ethereum, IPFS, MetaMask, Node.js",
-            image: "/images/project-2.webp",
+            image: "/images/votechain.png",
             description: "A decentralized election system built on blockchain technology ensuring transparent, tamper-proof, and verifiable voting. Features smart contracts for vote integrity and real-time result tracking."
         },
         {
             id: 3,
             title: "EIE - Earthquake Impact Estimator",
-            category: "AI / ML",
-            technologies: "Python, TensorFlow, Scikit-learn, FastAPI, React, PostgreSQL",
-            image: "/images/project-3.webp",
-            description: "An AI-powered earthquake prediction and impact estimation system. Uses seismic data analysis and machine learning to detect patterns and provide early warnings before earthquakes strike."
+            category: "IoT / Hardware",
+            technologies: "Arduino, C++, IoT Sensors, Python, ML, React",
+            image: "/images/eie.png",
+            description: "A practical circuit-based IoT system utilizing Arduino to predict earthquakes before they strike. Integrates hardware sensors for real-time seismic detection and impact estimation."
         },
         {
             id: 4,
             title: "GameKroy",
             category: "Full Stack",
             technologies: "React, Node.js, MongoDB, Express, Stripe, TailwindCSS",
-            image: "/images/project-4.webp",
+            image: "/images/gamekroy.png",
             description: "A full-featured e-commerce platform for gaming products. Includes user authentication, product catalog, shopping cart, secure payments, order tracking, and admin dashboard."
         },
         {
@@ -138,7 +138,7 @@ export const config = {
             title: "RedxChess",
             category: "AI / Game Engine",
             technologies: "Python, C++, Neural Networks, Bitboards, UCI Protocol",
-            image: "/images/project-5.webp",
+            image: "/images/redxchess.png",
             description: "A high-performance chess engine rated 3640 ELO. Features advanced search algorithms, neural network evaluation, and optimized bitboard representation for lightning-fast move generation."
         },
         {
@@ -146,7 +146,7 @@ export const config = {
             title: "Floodhub",
             category: "AI / ML",
             technologies: "Python, TensorFlow, Pandas, React, FastAPI, GIS",
-            image: "/images/project-6.webp",
+            image: "/images/floodhub.png",
             description: "A flood prediction model specifically designed for Bangladesh's river systems. Analyzes weather patterns, water levels, and historical data to provide accurate flood forecasts and alerts."
         },
         {
@@ -154,7 +154,7 @@ export const config = {
             title: "Phoenix",
             category: "AI Assistant",
             technologies: "Python, Speech Recognition, PyAutoGUI, OpenAI API, Tkinter",
-            image: "/images/project-7.webp",
+            image: "/images/phoenix.png",
             description: "A JARVIS-inspired personal AI desktop assistant. Controls system functions, manages tasks, answers queries, automates workflows, and provides voice-activated computing experience."
         },
         {
@@ -162,7 +162,7 @@ export const config = {
             title: "HekTools",
             category: "Security / Android",
             technologies: "Kotlin, Android SDK, Firebase, Python, Encryption",
-            image: "/images/project-8.webp",
+            image: "/images/hektools.png",
             description: "An advanced Android monitoring and security research tool. Features remote device management, activity logging, and encrypted data transmission for security testing purposes."
         }
     ],

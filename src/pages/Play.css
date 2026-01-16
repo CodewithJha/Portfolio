@@ -50,13 +50,27 @@ body:has(.play-page) {
 }
 
 @keyframes floatOrb1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, 20px) scale(1.1); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, 20px) scale(1.1);
+  }
 }
 
 @keyframes floatOrb2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-20px, -30px) scale(1.05); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-20px, -30px) scale(1.05);
+  }
 }
 
 .play-header {
@@ -230,7 +244,7 @@ body:has(.play-page) {
   padding: 10px;
   background: linear-gradient(145deg, rgba(20, 15, 25, 0.95), rgba(11, 8, 12, 0.98));
   border-radius: 16px;
-  box-shadow: 
+  box-shadow:
     0 0 80px rgba(251, 141, 255, 0.12),
     0 0 120px rgba(194, 164, 255, 0.08),
     0 25px 50px rgba(0, 0, 0, 0.5),
@@ -526,6 +540,7 @@ body:has(.play-page) {
     display: flex;
     flex-direction: column;
   }
+
   .chat-messages {
     max-height: 220px;
     min-height: 120px;
@@ -574,12 +589,18 @@ body:has(.play-page) {
   }
 
   .chat-panel {
-    height: 320px;
-    max-height: 60vh;
+    height: 350px;
+    max-height: 350px;
+    min-height: 300px;
   }
+
   .chat-messages {
-    max-height: 140px;
-    min-height: 80px;
+    flex: 1;
+    max-height: 200px;
+    min-height: 150px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -617,6 +638,8 @@ body:has(.play-page) {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -681,10 +704,14 @@ body:has(.play-page) {
 }
 
 @keyframes typingDot {
-  0%, 60%, 100% {
+
+  0%,
+  60%,
+  100% {
     transform: translateY(0);
     opacity: 0.5;
   }
+
   30% {
     transform: translateY(-4px);
     opacity: 1;
@@ -756,6 +783,7 @@ body:has(.play-page) {
     display: flex;
     flex-direction: column;
   }
+
   .chat-messages {
     max-height: 220px;
     min-height: 120px;

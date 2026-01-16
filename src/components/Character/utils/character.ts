@@ -34,8 +34,8 @@ const setCharacter = (
                 child.castShadow = false;
                 child.receiveShadow = false;
                 mesh.frustumCulled = true;
-                if (mesh.material) {
-                  mesh.material.precision = 'mediump';
+                if (mesh.material && !Array.isArray(mesh.material)) {
+                  (mesh.material as THREE.ShaderMaterial).precision = 'mediump';
                 }
               }
             });
