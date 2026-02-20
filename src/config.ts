@@ -1,25 +1,25 @@
 export const config = {
     developer: {
-        name: "Redoyanul",
-        fullName: "Redoyanul Haque",
-        title: "AI & Full-Stack Developer",
-        description: "AI & Full-Stack Developer building intelligent systems and modern web applications. Passionate about machine learning, deep learning, and creating next-gen autonomous agents."
+        name: "Priyanshu",
+        fullName: "Priyanshu Jha",
+        title: "Data Engineer & Python Developer",
+        description: "Data Engineer & Python Developer building intelligent systems and modern web applications. Passionate about machine learning, deep learning, and creating next-gen autonomous agents."
     },
     social: {
         github: "red1-for-hek",
         email: "redoyanul1234@gmail.com",
-        location: "Bangladesh"
+        location: "India"
     },
     about: {
         title: "About Me",
-        description: "I am a self-taught AI & Full-Stack Developer from Bangladesh. I build intelligent systems, chatbots, and modern web applications. My expertise includes Machine Learning, Deep Learning, NLP, and Full-Stack Web Development with React, Node.js, and Python. Currently building next-gen AI Agents and JARVIS-like Personal Assistants. I have a competitive programming mindset and a deep passion for automation. Code is poetry, AI is the canvas."
+        description: "I am a self-taught Data Engineer & Python Developer from India. I build intelligent systems, chatbots, and modern web applications. My expertise includes Machine Learning, Deep Learning, NLP, and Python Development with React, Node.js, and Python. Currently building next-gen AI Agents and JARVIS-like Personal Assistants. I have a competitive programming mindset and a deep passion for automation. Code is poetry, AI is the canvas."
     },
     experiences: [
         {
             position: "Learning Something New",
             company: "Self-Development",
             period: "2025 - Present",
-            location: "Bangladesh",
+            location: "India",
             description: "Continuously exploring emerging technologies, researching advanced AI systems, and pushing the boundaries of what's possible in tech.",
             responsibilities: [
                 "Researching cutting-edge AI and ML technologies",
@@ -30,10 +30,10 @@ export const config = {
             technologies: ["Research", "Innovation", "Open Source", "New Tech"]
         },
         {
-            position: "AI Engineer",
+            position: "Data Engineer",
             company: "Freelance & Projects",
             period: "2025",
-            location: "Bangladesh",
+            location: "India",
             description: "Developing intelligent AI systems, chatbots, and machine learning solutions. Building next-gen conversational AI agents and JARVIS-like personal assistants.",
             responsibilities: [
                 "Building AI-powered chatbots and conversational agents",
@@ -44,13 +44,13 @@ export const config = {
             technologies: ["Python", "TensorFlow", "PyTorch", "LLMs", "NLP", "AI Agents"]
         },
         {
-            position: "Full-Stack Developer",
+            position: "Python Developer",
             company: "Freelance & Projects",
             period: "2024",
-            location: "Bangladesh",
+            location: "India",
             description: "Built complete web applications from frontend to backend. Developed responsive UIs, RESTful APIs, and database solutions for various clients and projects.",
             responsibilities: [
-                "Developing full-stack web applications using React and Node.js",
+                "Developing Python web applications using React and Node.js",
                 "Building RESTful APIs and integrating databases",
                 "Creating responsive and interactive user interfaces",
                 "Deploying and maintaining web applications"
@@ -61,7 +61,7 @@ export const config = {
             position: "Python Developer",
             company: "Self-Taught & Projects",
             period: "2023",
-            location: "Bangladesh",
+            location: "India",
             description: "Dove deep into Python programming, building automation scripts, bots, and mastering the fundamentals of software development and problem-solving.",
             responsibilities: [
                 "Learning Python programming and core concepts",
@@ -75,7 +75,7 @@ export const config = {
             position: "Graphic Designer",
             company: "Freelance",
             period: "2022",
-            location: "Bangladesh",
+            location: "India",
             description: "Started my creative journey as a graphic designer, creating logos, banners, and visual content. This sparked my passion for technology and digital creation.",
             responsibilities: [
                 "Designing logos and brand identity materials",
@@ -89,7 +89,7 @@ export const config = {
             position: "Microsoft Office",
             company: "Begin Learning",
             period: "2021",
-            location: "Bangladesh",
+            location: "India",
             description: "Started my journey into the digital world by learning Microsoft Office tools. This foundational step introduced me to computers and sparked my curiosity for technology.",
             responsibilities: [
                 "Learning Microsoft Word, Excel, and PowerPoint",
@@ -107,7 +107,7 @@ export const config = {
             category: "AI / LLM",
             technologies: "Python, PyTorch, Transformers, FastAPI, React, MongoDB",
             image: "/images/drishti.png",
-            description: "Bangladesh's first intelligent advanced AI chatbot powered by a custom Large Language Model. Features natural language understanding, contextual conversations, and multilingual support including Bengali."
+            description: "India's first intelligent advanced AI chatbot powered by a custom Large Language Model. Features natural language understanding, contextual conversations, and multilingual support including Bengali."
         },
         {
             id: 2,
@@ -147,7 +147,7 @@ export const config = {
             category: "AI / ML",
             technologies: "Python, TensorFlow, Pandas, React, FastAPI, GIS",
             image: "/images/floodhub.png",
-            description: "A flood prediction model specifically designed for Bangladesh's river systems. Analyzes weather patterns, water levels, and historical data to provide accurate flood forecasts and alerts."
+            description: "A flood prediction model specifically designed for India's river systems. Analyzes weather patterns, water levels, and historical data to provide accurate flood forecasts and alerts."
         },
         {
             id: 7,
@@ -176,13 +176,13 @@ export const config = {
     },
     skills: {
         develop: {
-            title: "AI DEVELOPER",
+            title: "DATA ENGINEER",
             description: "Building intelligent systems & AI solutions",
             details: "Developing AI agents, chatbots, and machine learning models using Python, TensorFlow, and PyTorch. Specializing in LLMs, NLP, deep learning, and autonomous systems.",
             tools: ["Python", "TensorFlow", "PyTorch", "OpenCV", "Scikit-learn", "LLMs", "NLP", "Deep Learning", "Chatbots", "AI Agents"]
         },
         design: {
-            title: "FULL-STACK",
+            title: "PYTHON",
             description: "Modern web development & scalable applications",
             details: "Building responsive and performant web applications using React, Next.js, Node.js, and databases. Creating seamless user experiences with modern UI/UX principles.",
             tools: ["React", "Next.js", "Node.js", "TypeScript", "MongoDB", "PostgreSQL", "TailwindCSS", "REST APIs", "Docker", "Git"]
