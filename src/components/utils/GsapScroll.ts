@@ -61,7 +61,9 @@ export function setCharTimeline(
     }
   });
   let neckBone = character?.getObjectByName("spine005");
-  if (window.innerWidth > 1024) {
+  // Only apply GSAP transforms on desktop, not mobile
+  const isDesktop = window.innerWidth > 1024;
+  if (isDesktop) {
     if (character) {
       tl1
         .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
@@ -87,6 +89,7 @@ export function setCharTimeline(
         )
         .to(character.rotation, { y: 0.92, x: 0.12, delay: 3, duration: 3 }, 0)
         .to(neckBone!.rotation, { x: 0.6, delay: 2, duration: 3 }, 0)
+        .to(camera.position, { x: 0, y: 8.4, z: 75 }, 0)
         .to(monitor.material, { opacity: 1, duration: 0.8, delay: 3.2 }, 0)
         .to(screenLight.material, { opacity: 1, duration: 0.8, delay: 4.5 }, 0)
         .fromTo(
@@ -119,7 +122,10 @@ export function setCharTimeline(
         .to(character.rotation, { x: -0.04, duration: 2, delay: 1 }, 0);
     }
   } else {
+    // Mobile: ensure character-model stays in place and doesn't get transformed
     if (character) {
+      // Reset any GSAP transforms that might have been applied
+      gsap.set(".character-model", { clearProps: "all" });
       const tM2 = gsap.timeline({
         scrollTrigger: {
           trigger: ".what-box-in",

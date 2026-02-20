@@ -3,10 +3,34 @@
   display: none;
 }
 
-/* Remove mobile photo and ensure 3D character is always hidden on mobile */
+/* Mobile layout - show 3D character */
 @media only screen and (max-width: 768px) {
+  .character-container {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
   .character-model {
-    display: none !important;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 60vh;
+    width: 100%;
+    max-width: 100%;
+    z-index: 0;
+    pointer-events: none;
+    display: block !important;
+  }
+
+  .character-model canvas {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .landing-section,
@@ -30,30 +54,24 @@
     bottom: auto !important;
     transform: none !important;
     padding-top: 40px;
-    /* Shift higher up */
     margin-bottom: 20px;
     z-index: 10;
     text-align: center;
     width: 100% !important;
     order: 1;
-    /* First: Name */
     height: auto !important;
   }
 
   .landing-intro h1 {
     word-spacing: 0.1em;
     font-size: 32px !important;
-    /* Ensure nice size */
     line-height: 1.2 !important;
     margin: 0;
   }
 
-  /* Ensure name parts display correctly */
   .landing-intro h1 br {
     display: block;
-    /* Keep break on mobile for 2 lines, or use display:none for 1 line */
     content: " ";
-    /* Fallback */
     margin-bottom: 5px;
   }
 
@@ -67,26 +85,21 @@
     transform: none !important;
     text-align: center;
     margin-top: 20px;
-    /* Space between name and subtitles */
     z-index: 10;
     background: transparent;
     padding-bottom: 50px;
-    /* Add bottom padding for scroll space */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     height: auto !important;
-    /* Force auto height */
     width: 100% !important;
     order: 3;
-    /* Third: Subtitles */
   }
 
   .landing-info h3 {
     text-align: center;
     display: none;
-    /* Hide 'An' if not needed, or keep it static */
   }
 
   /* Force static positioning to prevent overlaps */
@@ -104,10 +117,8 @@
     text-align: center;
     height: auto !important;
     transform: none !important;
-    /* Remove any transforms */
   }
 
-  /* Specific styling for the distinct parts */
   .landing-h2-1 {
     font-size: 24px !important;
     color: var(--accentColor);
@@ -123,28 +134,9 @@
     display: none;
   }
 
-  /* Show mobile photo */
+  /* Hide static mobile photo so 3D character is used everywhere */
   .mobile-photo {
-    display: block;
-    position: relative !important;
-    width: 100%;
-    max-width: 380px;
-    margin: 0 auto;
-    z-index: 1;
-    order: 2;
-    /* Second: Photo */
-    /* Add fade mask to bottom */
-    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-    pointer-events: none;
-    transform: none !important;
-  }
-
-  .mobile-photo img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 40px rgba(194, 164, 255, 0.4));
+    display: none !important;
   }
 }
 
@@ -255,6 +247,15 @@
   opacity: 0;
 }
 
+.character-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
 .character-model {
   height: 80%;
   height: 80vh;
@@ -267,6 +268,11 @@
   z-index: 0;
   bottom: 50px;
   pointer-events: inherit;
+}
+
+/* Safety: if multiple WebGL canvases ever get attached, keep only the first */
+.character-model canvas:nth-of-type(n + 2) {
+  display: none !important;
 }
 
 .character-model::after {
@@ -341,10 +347,6 @@
   font-weight: 500;
   font-family: "Geist", sans-serif;
 }
-
-/* .landing-intro h1 span {
-   font-weight: 200; 
-} */
 
 .landing-info {
   position: absolute;
@@ -480,6 +482,15 @@ h2.landing-info-h2 {
 }
 
 @media screen and (min-width: 1025px) {
+  .character-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 11;
+  }
+
   .character-model {
     height: 100vh;
     bottom: 0;

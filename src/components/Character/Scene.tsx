@@ -11,7 +11,6 @@ import {
   handleTouchMove,
 } from "./utils/mouseUtils";
 import setAnimations from "./utils/animationUtils";
-import { setProgress } from "../Loading";
 
 const Scene = () => {
   const canvasDiv = useRef<HTMLDivElement | null>(null);
@@ -22,6 +21,14 @@ const Scene = () => {
   const [character, setChar] = useState<THREE.Object3D | null>(null);
   useEffect(() => {
     if (canvasDiv.current) {
+      // Ensure we never accumulate multiple canvases (e.g. StrictMode/dev double-mount)
+      while (canvasDiv.current.firstChild) {
+        canvasDiv.current.removeChild(canvasDiv.current.firstChild);
+      }
+      
+      // Clear the scene to prevent duplicate characters
+      sceneRef.current.clear();
+
       let rect = canvasDiv.current.getBoundingClientRect();
       let container = { width: rect.width, height: rect.height };
       const aspect = container.width / container.height;
@@ -39,7 +46,6 @@ const Scene = () => {
       canvasDiv.current.appendChild(renderer.domElement);
 
       const camera = new THREE.PerspectiveCamera(14.5, aspect, 0.1, 1000);
-      camera.position.z = 10;
       camera.position.set(0, 13.1, 24.7);
       camera.zoom = 1.1;
       camera.updateProjectionMatrix();
@@ -51,11 +57,17 @@ const Scene = () => {
       const clock = new THREE.Clock();
 
       const light = setLighting(scene);
-      let progress = setProgress((value) => setLoading(value));
       const { loadCharacter } = setCharacter(renderer, scene, camera);
 
-      loadCharacter().then((gltf) => {
-        if (gltf) {
+      loadCharacter()
+        .then((gltf) => {
+          if (!gltf) return;
+          // Ensure no duplicate character exists
+          const existingCharacter = scene.children.find(child => child.type === 'Group' || child.name === 'character');
+          if (existingCharacter) {
+            scene.remove(existingCharacter);
+          }
+          
           const animations = setAnimations(gltf);
           hoverDivRef.current && animations.hover(gltf, hoverDivRef.current);
           mixer = animations.mixer;
@@ -64,17 +76,22 @@ const Scene = () => {
           scene.add(character);
           headBone = character.getObjectByName("spine006") || null;
           screenLight = character.getObjectByName("screenlight") || null;
-          progress.loaded().then(() => {
-            setTimeout(() => {
-              light.turnOnLights();
-              animations.startIntro();
-            }, 2500);
-          });
+
+          // Mark loading as complete once the character is ready.
+          setLoading(100);
+          setTimeout(() => {
+            light.turnOnLights();
+            animations.startIntro();
+          }, 2500);
           window.addEventListener("resize", () =>
             handleResize(renderer, camera, canvasDiv, character)
           );
-        }
-      });
+        })
+        .catch((err) => {
+          console.error("Character load failed:", err);
+          // Don't block the whole site if the 3D model can't load.
+          setLoading(100);
+        });
 
       let mouse = { x: 0, y: 0 },
         interpolation = { x: 0.1, y: 0.2 };
@@ -99,16 +116,15 @@ const Scene = () => {
         });
       };
 
-      document.addEventListener("mousemove", (event) => {
-        onMouseMove(event);
-      });
+      document.addEventListener("mousemove", onMouseMove);
       const landingDiv = document.getElementById("landingDiv");
       if (landingDiv) {
         landingDiv.addEventListener("touchstart", onTouchStart);
         landingDiv.addEventListener("touchend", onTouchEnd);
       }
+      let animationFrameId: number;
       const animate = () => {
-        requestAnimationFrame(animate);
+        animationFrameId = requestAnimationFrame(animate);
         if (headBone) {
           handleHeadRotation(
             headBone,
@@ -134,8 +150,11 @@ const Scene = () => {
         window.removeEventListener("resize", () =>
           handleResize(renderer, camera, canvasDiv, character!)
         );
+        cancelAnimationFrame(animationFrameId);
         if (canvasDiv.current) {
-          canvasDiv.current.removeChild(renderer.domElement);
+          while (canvasDiv.current.firstChild) {
+            canvasDiv.current.removeChild(canvasDiv.current.firstChild);
+          }
         }
         if (landingDiv) {
           document.removeEventListener("mousemove", onMouseMove);

@@ -3,9 +3,11 @@ import {
   PropsWithChildren,
   useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import Loading from "../components/Loading";
+import { setProgress } from "../components/Loading";
 
 interface LoadingType {
   isLoading: boolean;
@@ -16,12 +18,9 @@ interface LoadingType {
 export const LoadingContext = createContext<LoadingType | null>(null);
 
 export const LoadingProvider = ({ children }: PropsWithChildren) => {
-  const [isLoading, setIsLoading] = useState(() => {
-    // Skip loading on mobile
-    if (window.innerWidth <= 768) return false;
-    return true;
-  });
+  const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(0);
+  const progressRef = useRef<ReturnType<typeof setProgress> | null>(null);
 
   const value = {
     isLoading,
@@ -29,19 +28,23 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
     setLoading,
   };
   useEffect(() => {
-    // Auto-start animations on mobile since there's no 3D model
-    if (window.innerWidth <= 768) {
-      import("../components/utils/initialFX").then((module) => {
-        if (module.initialFX) {
-          setTimeout(() => {
-            module.initialFX();
-          }, 100);
-        }
-      });
-    }
-  }, []);
+    if (!isLoading) return;
 
-  useEffect(() => {}, [loading]);
+    // Start simulated progress immediately so we're never stuck at 0% if 3D init stalls.
+    const progress = setProgress((value) => setLoading(value));
+    progressRef.current = progress;
+
+    // Safety: force-finish after 15s so the site is still usable even if WebGL/model load fails.
+    const forceFinishTimeout = window.setTimeout(() => {
+      progress.finish();
+    }, 15000);
+
+    return () => {
+      window.clearTimeout(forceFinishTimeout);
+      progress.stop();
+      progressRef.current = null;
+    };
+  }, [isLoading]);
 
   return (
     <LoadingContext.Provider value={value as LoadingType}>

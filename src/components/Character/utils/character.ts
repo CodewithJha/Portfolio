@@ -13,18 +13,35 @@ const setCharacter = (
   dracoLoader.setDecoderPath("/draco/");
   loader.setDRACOLoader(dracoLoader);
 
+  const hasWebCrypto = () => {
+    // WebCrypto (crypto.subtle) is only guaranteed in secure contexts (https/localhost)
+    // On a real phone hitting your dev server via LAN IP (http://192.168.x.x:5173),
+    // `crypto.subtle` is often unavailable even if WebGL works fine.
+    return (
+      typeof window !== "undefined" &&
+      // @ts-expect-error - secureContext exists on Window in browsers
+      (window.isSecureContext ?? false) &&
+      typeof crypto !== "undefined" &&
+      !!crypto.subtle
+    );
+  };
+
   const loadCharacter = () => {
     return new Promise<GLTF | null>(async (resolve, reject) => {
       try {
-        const encryptedBlob = await decryptFile(
-          "/models/character.enc",
-          "Character3D#@"
-        );
-        const blobUrl = URL.createObjectURL(new Blob([encryptedBlob]));
+        let modelUrl: string;
+
+        if (hasWebCrypto()) {
+          const decrypted = await decryptFile("/models/character.enc", "Character3D#@");
+          modelUrl = URL.createObjectURL(new Blob([decrypted]));
+        } else {
+          // Fallback for non-secure contexts (common on phones viewing a LAN dev server)
+          modelUrl = "/models/character.glb";
+        }
 
         let character: THREE.Object3D;
         loader.load(
-          blobUrl,
+          modelUrl,
           async (gltf) => {
             character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);

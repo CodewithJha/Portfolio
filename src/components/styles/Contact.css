@@ -131,7 +131,9 @@ a.contact-social {
   }
   .contact-section {
     margin-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 200px; /* extra bottom space so it clears the fixed 3D character */
+    position: relative;
+    z-index: 3; /* ensure it renders above the character canvas on mobile */
   }
   .contact-container {
     width: calc(100% - 25px);
