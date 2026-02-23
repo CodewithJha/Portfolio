@@ -19,7 +19,6 @@ const setCharacter = (
     // `crypto.subtle` is often unavailable even if WebGL works fine.
     return (
       typeof window !== "undefined" &&
-      // @ts-expect-error - secureContext exists on Window in browsers
       (window.isSecureContext ?? false) &&
       typeof crypto !== "undefined" &&
       !!crypto.subtle
