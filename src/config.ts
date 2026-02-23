@@ -7,7 +7,7 @@ export const config = {
     },
     social: {
         github: "red1-for-hek",
-        email: "redoyanul1234@gmail.com",
+        email: "Priyanshujha254@gmail.com",
         location: "India"
     },
     about: {
@@ -167,7 +167,7 @@ export const config = {
         }
     ],
     contact: {
-        email: "redoyanul1234@gmail.com",
+        email: "Priyanshujha254@gmail.com",
         github: "https://github.com/CodewithJha",
         linkedin: "https://www.linkedin.com/in/codewithjha",
         twitter: "https://x.com/CodewithJha",

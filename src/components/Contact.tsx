@@ -18,31 +18,20 @@ const Contact = () => {
       },
     });
 
-    // Animate title from bottom
-    contactTimeline.fromTo(
-      ".contact-section h3",
-      {
-        opacity: 0,
-        y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power3.out",
-      }
-    );
+    // Animate title from bottom (without hiding it before scroll on mobile)
+    contactTimeline.from(".contact-section h3", {
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      ease: "power3.out",
+    });
 
     // Animate contact boxes with stagger from bottom
-    contactTimeline.fromTo(
+    contactTimeline.from(
       ".contact-box",
       {
         opacity: 0,
         y: 50,
-      },
-      {
-        opacity: 1,
-        y: 0,
         duration: 0.6,
         stagger: 0.15,
         ease: "power3.out",
