@@ -168,11 +168,11 @@ export const config = {
     ],
     contact: {
         email: "redoyanul1234@gmail.com",
-        github: "https://github.com/red1-for-hek",
-        linkedin: "https://linkedin.com/in/red1-for-hek",
-        twitter: "https://x.com/red_1_ul",
+        github: "https://github.com/CodewithJha",
+        linkedin: "https://www.linkedin.com/in/codewithjha",
+        twitter: "https://x.com/CodewithJha",
         facebook: "https://www.facebook.com/redoyanulhaque.hacker.official",
-        instagram: "https://www.instagram.com/red_1_ul"
+        instagram: "https://www.instagram.com/kaatilladka18/"
     },
     skills: {
         develop: {
