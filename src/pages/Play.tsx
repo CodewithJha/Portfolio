@@ -251,6 +251,13 @@ const Play = () => {
 
       const data = await response.json();
 
+      if (!response.ok) {
+        const serverError =
+          (data && (data.error || data.details)) ||
+          'Chat server error';
+        throw new Error(serverError);
+      }
+
       if (data.choices && data.choices[0]?.message?.content) {
         const assistantMessage: ChatMessage = {
           role: 'assistant',
@@ -258,13 +265,19 @@ const Play = () => {
         };
         setChatMessages(prev => [...prev, assistantMessage]);
       } else {
-        throw new Error('Invalid response');
+        throw new Error('Invalid response format from chat server');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Chat error:', error);
+      const friendlyMessage =
+        typeof error?.message === 'string' &&
+        error.message.includes('Missing API Key')
+          ? 'Chat is temporarily unavailable because the server is missing its AI API key. Please contact the site owner to fix the configuration.'
+          : 'Sorry, the chat server is having an issue (not your internet). Please try again later. 😅';
+
       const errorMessage: ChatMessage = {
         role: 'assistant',
-        content: 'Sorry, having some connection issues. Try again? 😅'
+        content: friendlyMessage
       };
       setChatMessages(prev => [...prev, errorMessage]);
     } finally {
