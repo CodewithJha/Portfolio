@@ -76,9 +76,9 @@ export const config = {
             company: "Freelance",
             period: "2022",
             location: "India",
-            description: "Started my creative journey as a graphic designer, creating logos, banners, and visual content. This sparked my passion for technology and digital creation.",
+            description: "Started my creative journey as a graphic designer, creating brand visuals, banners, and other visual content. This sparked my passion for technology and digital creation.",
             responsibilities: [
-                "Designing logos and brand identity materials",
+                "Designing brand identity materials",
                 "Creating social media graphics and banners",
                 "Working with clients on creative projects",
                 "Learning design principles and visual aesthetics"
